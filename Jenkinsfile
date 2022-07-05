@@ -14,8 +14,7 @@ pipeline {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: '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', url: 'https://github.com/boopathip374/employee_demo/employee
-                    ';
+                    git branch: 'main', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
         }
