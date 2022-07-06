@@ -28,7 +28,7 @@ pipeline {
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
-                    pom = readMavenPom file: "pom.xml";
+                    pom = readMavenPom file: 'pom.xml';
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
@@ -36,13 +36,13 @@ pipeline {
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
-                            nexusVersion: NEXUS_VERSION,
-                            protocol: NEXUS_PROTOCOL,
-                            nexusUrl: NEXUS_URL,
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            nexusUrl: '54.89.185.104:8081',
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: NEXUS_REPOSITORY,
-                            credentialsId: NEXUS_CREDENTIAL_ID,
+                            repository: 'develop',
+                            credentialsId: 'nexus3',
                             artifacts: [
                                 [artifactId: pom.artifactId,
                                 classifier: '',
