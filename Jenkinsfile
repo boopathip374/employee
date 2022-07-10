@@ -61,5 +61,11 @@ pipeline {
                 }
             }
         }
+        stage('Execute Ansible Playbook') {
+            steps {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml'
+            }
+        }
+        
     }
 }
