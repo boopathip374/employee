@@ -14,4 +14,4 @@
       mode: 0755
       
    - name: Run jar
-     shell: java -jar myapp/employee-0.0.1-SNAPSHOT.jar
+     shell: java -jar myapp/employee-0.0.1-SNAPSHOT
