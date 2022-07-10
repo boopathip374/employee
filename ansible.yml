@@ -1,11 +1,13 @@
+---
 - hosts: webservers
   tasks:
-    - maven_artifact:
-        group_id: com.employee
-        artifact_id: com.employee
-        repository_url: 'http://54.89.185.104:8081/repository/develop/'
-        username: admin
-        password: admin
-        state: present
-        dest: /myapp/employee-0.0.1-SNAPSHOT.jar
-        shell: java -jar employee-0.0.1-SNAPSHOT.jar
+   - maven_artifact:
+      group_id: com.employee
+      artifact_id: com.employee
+      repository_url: 'http://54.89.185.104:8081/repository/develop/'
+      username: admin
+      password: admin
+      state: present
+      dest: /myapp/employee-0.0.1-SNAPSHOT.jar
+   - name: Run jar
+     shell: java -jar myapp/cicd-0.0.1-SNAPSHOT.jar
