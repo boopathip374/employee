@@ -4,6 +4,7 @@
    - maven_artifact:
       group_id: com.employee
       artifact_id: employee
+      version: 0.0.1-SNAPSHOT
       repository_url: 'http://54.89.185.104:8081/repository/develop/'
       username: admin
       password: admin
