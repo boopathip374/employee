@@ -61,9 +61,12 @@ pipeline {
                 }
             }
         }
-        stage('Execute Ansible Playbook') {
+       stage('Deploy to test'){
             steps {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml'
+                dir('deployment'){
+                    echo 'Deploying to test'
+                    sh 'ansible-playbook -i dev-servers site.yml'
+                }
             }
         }
         

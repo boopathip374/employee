@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  roles:
+     - deploy
+  vars:
+    - employee_port: 80

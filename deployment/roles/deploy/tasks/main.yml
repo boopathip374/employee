@@ -1,0 +1,31 @@
+- name: Create demo directory
+  file: path=/opt/demo state=directory
+
+- name: Download JAR File to the demo directory
+  maven_artifact:
+    group_id: "{{ group_id }}"
+    artifact_id: "{{ artifact_id }}"
+    extension: jar
+    version: "{{ artifact_version }}"
+    repository_url: "{{ repository_url }}"
+    username: admin
+    password: admin
+    state: present
+    dest: /opt/demo/
+    mode: 0755
+
+- name: Ensure app is configured
+  template:
+    src: application.properties.j2
+    dest: /opt/demo/application.properties
+
+- name: Ensure logging is configured
+  template:
+    src: logback-spring.xml.j2
+    dest: /opt/demo/logback-spring.xml
+
+- name: Install demo systemd unit file
+  template: src=demo.service.j2 dest=/etc/systemd/system/demo.service
+
+- name: Start demo
+  systemd: state=restarted name=demo daemon_reload=yes

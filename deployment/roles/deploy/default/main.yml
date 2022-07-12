@@ -1,0 +1,5 @@
+---
+group_id: com.employee
+artifact_id: employee
+artifact_version: 0.0.1-SNAPSHOT
+repository_url: 'http://54.89.185.104:8081/repository/develop/'

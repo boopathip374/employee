@@ -1,0 +1,14 @@
+[Unit]
+Description=Demo Service
+
+[Service]
+User=root
+WorkingDirectory=/opt/demo/
+ExecStart=/usr/bin/java -Xmx256m -jar employee-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
