@@ -21,7 +21,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 script {
-                    sh "mvn package -DskipTests=true"
+                    sh 'mvn clean install spotbugs:spotbugs checkstyle:checkstyle deploy'
                 }
             }
         }
