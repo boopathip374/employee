@@ -1,5 +1,6 @@
 ---
 - hosts: webservers
+  remote_user: ec2-user
   roles:
      - deploy
   vars:
