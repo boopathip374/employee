@@ -1,6 +1,6 @@
-- name: Mkdir /opt/applications
+- name: Mkdir /opt/demo
   file: 
-    path=/opt/applications 
+    path=/opt/demo 
     state=directory
   become: yes
 
