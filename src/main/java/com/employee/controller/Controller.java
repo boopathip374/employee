@@ -38,7 +38,7 @@ public class Controller {
 	public ResponseEntity<?> createEmployee(@RequestBody RequestEmployeeService requestEmployeeService)throws ApiException {
 		Response response = null;
 		try {
-			System.out.print("Inside create api");
+			
 			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequest(requestEmployeeService);
 			if (null != responseEntity) {
 				return responseEntity;
