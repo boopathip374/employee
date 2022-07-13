@@ -1,5 +1,8 @@
-- name: Create demo directory
-  file: path=/opt/demo state=directory
+- name: Mkdir /opt/applications
+  file: 
+    path=/opt/applications 
+    state=directory
+  become: yes
 
 - name: Download JAR File to the demo directory
   maven_artifact:
