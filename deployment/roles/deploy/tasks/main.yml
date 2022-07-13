@@ -19,11 +19,13 @@
     mode: 0755
 
 - name: Ensure app is configured
+  become: yes
   template:
     src: application.properties.j2
     dest: /opt/demo/application.properties
 
 - name: Ensure logging is configured
+  become: yes
   template:
     src: logback-spring.xml.j2
     dest: /opt/demo/logback-spring.xml
