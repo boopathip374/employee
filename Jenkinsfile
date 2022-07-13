@@ -65,7 +65,7 @@ pipeline {
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
-                    sh 'ansible-playbook -i credentialsId: 'private-key' dev-servers site.yml'
+                     ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev-servers', playbook: 'site.yml'
                 }
             }
         }
