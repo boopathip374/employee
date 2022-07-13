@@ -6,11 +6,11 @@
 
 - name: Download JAR File to the demo directory
   maven_artifact:
-    group_id: "{{ group_id }}"
-    artifact_id: "{{ artifact_id }}"
+    group_id: "com.employee"
+    artifact_id: "employee"
     extension: jar
-    version: "{{ artifact_version }}"
-    repository_url: "{{ repository_url }}"
+    version: "0.0.1-SNAPSHOT"
+    repository_url: 'http://54.242.165.219:8081/repository/develop/'
     username: admin
     password: admin
     state: present
