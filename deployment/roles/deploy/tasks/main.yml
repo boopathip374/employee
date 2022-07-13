@@ -5,6 +5,7 @@
   become: yes
 
 - name: Download JAR File to the demo directory
+  become: yes
   maven_artifact:
     group_id: "com.employee"
     artifact_id: "employee"
@@ -28,7 +29,9 @@
     dest: /opt/demo/logback-spring.xml
 
 - name: Install demo systemd unit file
+  become: yes
   template: src=demo.service.j2 dest=/etc/systemd/system/demo.service
 
 - name: Start demo
+  become: yes
   systemd: state=restarted name=demo daemon_reload=yes
