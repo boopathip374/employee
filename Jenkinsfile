@@ -65,7 +65,7 @@ pipeline {
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
-                    sh 'ansible-playbook -i dev-servers site.yml'
+                    sh 'ansible-playbook -i credentialsId: 'private-key' dev-servers site.yml'
                 }
             }
         }
