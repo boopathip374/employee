@@ -24,7 +24,7 @@
     dest: /opt/demo/
     mode: 0755
     force: yes  
-    backup: true
+    backup: "true"
 
 - name: Ensure app is configured
   become: yes
