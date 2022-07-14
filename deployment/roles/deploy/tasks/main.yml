@@ -6,9 +6,7 @@
 
 - name: Download JAR File to the demo directory
   become: yes
-  copy:
-   src:
-    maven_artifact:
+  maven_artifact:
     group_id: "com.employee"
     artifact_id: "employee"
     extension: jar
@@ -17,10 +15,10 @@
     username: admin
     password: admin
     state: present
+    dest: /opt/demo/employee-0.0.1-SNAPSHOT.jar
     mode: 0644
     force: yes  
-    backup: yes
-   dest: /opt/demo/
+    backup: true
 
 - name: Ensure app is configured
   become: yes
