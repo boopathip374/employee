@@ -34,18 +34,25 @@ public class Controller {
 	@Autowired
 	private EmployeeService employeeService;
 	
-	/*
-	 * @PostMapping("/create") public ResponseEntity<?> createEmployee(@RequestBody
-	 * RequestEmployeeService requestEmployeeService)throws ApiException { Response
-	 * response = null; try { ResponseEntity<ErrorResponse> responseEntity =
-	 * employeeServiceValidation.validateEmployeeRequest(requestEmployeeService); if
-	 * (null != responseEntity) { return responseEntity; } else { response =
-	 * employeeService.create(requestEmployeeService); return new
-	 * ResponseEntity<Response>(response, HttpStatus.CREATED); } } catch (Exception
-	 * ex) { throw new
-	 * ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex
-	 * .getMessage()); } }
-	 */
+	
+	@PostMapping("/create")
+	public ResponseEntity<?> createEmployee(@RequestBody RequestEmployeeService requestEmployeeService)
+			throws ApiException {
+		Response response = null;
+		try {
+			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation
+					.validateEmployeeRequest(requestEmployeeService);
+			if (null != responseEntity) {
+				return responseEntity;
+			} else {
+				response = employeeService.create(requestEmployeeService);
+				return new ResponseEntity<Response>(response, HttpStatus.CREATED);
+			}
+		} catch (Exception ex) {
+			throw new ApiException(EmployeeConstants.ERROR_TYPE, EmployeeConstants.ERROR_CODE_500, ex.getMessage());
+		}
+	}
+	 
 	
 	/*
 	 * @PutMapping("/update") public ResponseEntity<?> updateEmployee(@RequestBody
