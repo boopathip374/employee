@@ -6,7 +6,9 @@
 
 - name: Delete existing Jar
   become: yes
-  shell: rm -f /opt/demo/employee-0.0.1-SNAPSHOT.jar
+  file:
+    path: "/opt/demo/employee-0.0.1-SNAPSHOT.jar"
+    state: absent
     
 - name: Download JAR File to the demo directory
   become: yes
