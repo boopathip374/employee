@@ -16,9 +16,8 @@
     password: admin
     state: present
     dest: /opt/demo/
-    owner: root
-    group: root
     mode: 0644
+    force: yes  
     backup: yes
 
 - name: Ensure app is configured
