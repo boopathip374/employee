@@ -7,14 +7,14 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "52.205.230.120:8081"
-        NEXUS_REPOSITORY = "master"
+        NEXUS_REPOSITORY = "develop"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
     }
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'master', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
+                    git branch: 'develop', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
                             nexusUrl: '52.205.230.120:8081',
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: 'master',
+                            repository: 'develop',
                             credentialsId: 'nexus3',
                             artifacts: [
                                 [artifactId: pom.artifactId,
@@ -58,6 +58,14 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
+                }
+            }
+        }
+       stage('Deploy to DEV_EC2'){
+            steps {
+                dir('deployment'){
+                    echo 'Deploying to test'
+                     ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev-servers', playbook: 'site.yml'
                 }
             }
         }
