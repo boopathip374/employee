@@ -90,40 +90,40 @@ public class Controller {
 		}
 	}
 	
-//	@GetMapping("/getemployee/{id}")
-//	public ResponseEntity<?> getEmployee(@PathVariable String id) throws ApiException {
-//		Optional<EmployeeEntity> response = null;
-//		try {
-//			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
-//			if (null != responseEntity) {
-//				return responseEntity;
-//			}else {
-//				response = employeeService.Read(id);
-//				if(response.isPresent()) {
-//					return new ResponseEntity<>(response.get(), HttpStatus.OK);
-//				}else {
-//					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//				}
-//			}
-//		} catch (Exception ex) {
-//			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
-//		}
-//	}
+	@GetMapping("/getemployee/{id}")
+	public ResponseEntity<?> getEmployee(@PathVariable String id) throws ApiException {
+		Optional<EmployeeEntity> response = null;
+		try {
+			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
+			if (null != responseEntity) {
+				return responseEntity;
+			}else {
+				response = employeeService.Read(id);
+				if(response.isPresent()) {
+					return new ResponseEntity<>(response.get(), HttpStatus.OK);
+				}else {
+					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				}
+			}
+		} catch (Exception ex) {
+			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
+		}
+	}
 	
-//	@DeleteMapping("/delete/{id}")
-//	public ResponseEntity<?> deleteEmployee(@PathVariable String id) throws ApiException {
-//		try {
-//			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
-//			if (null != responseEntity) {
-//				return responseEntity;
-//			} else {
-//				employeeService.delete(id);
-//				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//			}
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteEmployee(@PathVariable String id) throws ApiException {
+		try {
+			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
+			if (null != responseEntity) {
+				return responseEntity;
+			} else {
+				employeeService.delete(id);
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@DeleteMapping("/delete")
 	public ResponseEntity<?> deleteAllEmployee() throws ApiException {
