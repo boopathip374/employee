@@ -17,7 +17,7 @@
     artifact_id: "employee"
     extension: jar
     version: "0.0.1-SNAPSHOT"
-    repository_url: 'http://54.144.24.112:8081/repository/release/'
+    repository_url: 'http://54.144.24.112:8081/repository/develop/'
     username: admin
     password: admin
     state: present
