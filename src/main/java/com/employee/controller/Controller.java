@@ -56,23 +56,23 @@ public class Controller {
 	 
 	 
 	
-//	@PutMapping("/update")
-//	public ResponseEntity<?> updateEmployee(@RequestBody RequestEmployeeService requestEmployeeService)
-//			throws ApiException {
-//		Response response = null;
-//		try {
-//			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation
-//					.validateUpdateEmployeeRequest(requestEmployeeService);
-//			if (null != responseEntity) {
-//				return responseEntity;
-//			} else {
-//				response = employeeService.update(requestEmployeeService);
-//				return new ResponseEntity<Response>(response, HttpStatus.OK);
-//			}
-//		} catch (Exception ex) {
-//			throw new ApiException(EmployeeConstants.ERROR_TYPE, EmployeeConstants.ERROR_CODE_500, ex.getMessage());
-//		}
-//	}
+	@PutMapping("/update")
+	public ResponseEntity<?> updateEmployee(@RequestBody RequestEmployeeService requestEmployeeService)
+			throws ApiException {
+		Response response = null;
+		try {
+			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation
+					.validateUpdateEmployeeRequest(requestEmployeeService);
+			if (null != responseEntity) {
+				return responseEntity;
+			} else {
+				response = employeeService.update(requestEmployeeService);
+				return new ResponseEntity<Response>(response, HttpStatus.OK);
+			}
+		} catch (Exception ex) {
+			throw new ApiException(EmployeeConstants.ERROR_TYPE, EmployeeConstants.ERROR_CODE_500, ex.getMessage());
+		}
+	}
 	 
 	
 	@GetMapping("/getemployee")
