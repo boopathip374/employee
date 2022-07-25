@@ -6,7 +6,7 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "52.205.230.120:8081"
+        NEXUS_URL = "54.144.24.112:8081"
         NEXUS_REPOSITORY = "develop"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
     }
@@ -39,7 +39,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: '52.205.230.120:8081',
+                            nexusUrl: '54.144.24.112:8081',
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: 'develop',
