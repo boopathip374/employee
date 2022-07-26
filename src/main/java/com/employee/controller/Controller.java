@@ -110,20 +110,20 @@ public class Controller {
 		}
 	}
 	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteEmployee(@PathVariable String id) throws ApiException {
-		try {
-			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
-			if (null != responseEntity) {
-				return responseEntity;
-			} else {
-				employeeService.delete(id);
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+//	@DeleteMapping("/delete/{id}")
+//	public ResponseEntity<?> deleteEmployee(@PathVariable String id) throws ApiException {
+//		try {
+//			ResponseEntity<ErrorResponse> responseEntity = employeeServiceValidation.validateEmployeeRequestId(id);
+//			if (null != responseEntity) {
+//				return responseEntity;
+//			} else {
+//				employeeService.delete(id);
+//				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//			}
+//		} catch (Exception e) {
+//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
 	
 	@DeleteMapping("/delete")
 	public ResponseEntity<?> deleteAllEmployee() throws ApiException {
