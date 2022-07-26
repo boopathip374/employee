@@ -2,7 +2,6 @@
 - hosts: webservers
   remote_user: ec2-user
   roles:
-     - common
      - deploy
   vars:
     - employee_port: 80

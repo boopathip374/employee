@@ -1,7 +1,0 @@
-- name: Set up multiple authorized keys
-  authorized_key:
-    user: ec2-user
-    state: present
-    key: '{{ item }}'
-  with_file:
-    - public_keys/some-user.pub
