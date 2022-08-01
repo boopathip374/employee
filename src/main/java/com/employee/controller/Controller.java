@@ -75,20 +75,20 @@ public class Controller {
 	}
 	 
 	
-	@GetMapping("/getemployee")
-	public ResponseEntity<?> getAllEmployee() throws ApiException {
-		List<EmployeeEntity> response = null;
-		try {
-				response = employeeService.ReadAll();
-				if(response.isEmpty()) {
-					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				}else {
-					return new ResponseEntity<List<EmployeeEntity>>(response, HttpStatus.OK);
-				}
-		} catch (Exception ex) {
-			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
-		}
-	}
+//	@GetMapping("/getemployee")
+//	public ResponseEntity<?> getAllEmployee() throws ApiException {
+//		List<EmployeeEntity> response = null;
+//		try {
+//				response = employeeService.ReadAll();
+//				if(response.isEmpty()) {
+//					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//				}else {
+//					return new ResponseEntity<List<EmployeeEntity>>(response, HttpStatus.OK);
+//				}
+//		} catch (Exception ex) {
+//			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
+//		}
+//	}
 	
 	@GetMapping("/getemployee/{id}")
 	public ResponseEntity<?> getEmployee(@PathVariable String id) throws ApiException {
