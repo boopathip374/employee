@@ -3,13 +3,6 @@ pipeline {
     tools {
         maven 'Maven'
     }
-    environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "54.144.24.112:8081"
-        NEXUS_REPOSITORY = "master"
-        NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
-    }
     stages {
         stage("Clone code from GitHub") {
             steps {
@@ -39,7 +32,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: '54.144.24.112:8081',
+                            nexusUrl: '3.87.7.96:8081',
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: 'master',
