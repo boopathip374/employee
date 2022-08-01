@@ -125,15 +125,15 @@ public class Controller {
 		}
 	}
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<?> deleteAllEmployee() throws ApiException {
-		try {
-				employeeService.deleteAll();
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch (Exception ex) {
-			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
-		}
-	}
+//	@DeleteMapping("/delete")
+//	public ResponseEntity<?> deleteAllEmployee() throws ApiException {
+//		try {
+//				employeeService.deleteAll();
+//				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//		} catch (Exception ex) {
+//			throw new ApiException(EmployeeConstants.ERROR_TYPE,EmployeeConstants.ERROR_CODE_500,ex.getMessage());
+//		}
+//	}
 
 
 }
