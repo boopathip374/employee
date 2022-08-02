@@ -11,7 +11,7 @@ pipeline {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                echo "** Branch Name: BRANCH_NAME"
+                echo "** Branch Name: BRANCH_NAME";
                     git branch: BRANCH_NAME, credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
