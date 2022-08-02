@@ -5,8 +5,6 @@ pipeline {
     }
     environment {
         BRANCH_NAME = "${env.BRANCH_NAME}"
-        
-        
     }
     
     stages {
@@ -42,7 +40,7 @@ pipeline {
                             nexusUrl: '3.87.7.96:8081',
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: 'BRANCH',
+                            repository: BRANCH_NAME,
                             credentialsId: 'nexus3',
                             artifacts: [
                                 [artifactId: pom.artifactId,
