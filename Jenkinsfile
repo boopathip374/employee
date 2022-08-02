@@ -4,7 +4,7 @@ pipeline {
         maven 'Maven'
     }
     environment {
-        BRANCH = "env.BRANCH_NAME"
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
         
         
     }
@@ -13,8 +13,8 @@ pipeline {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                echo "** Branch Name: BRANCH"
-                    git branch: 'BRANCH', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
+                echo "** Branch Name: BRANCH_NAME"
+                    git branch: BRANCH_NAME, credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
         }
