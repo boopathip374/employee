@@ -4,9 +4,8 @@ pipeline {
         maven 'Maven'
     }
     environment {
-        BRANCH = env.BRANCH_NAME
+        BRANCH = "env.BRANCH_NAME"
         echo "** Branch Name: BRANCH"
-        NEXUS_REPOSITORY = "develop"
         
     }
     
