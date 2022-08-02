@@ -4,7 +4,7 @@ pipeline {
         maven 'Maven'
     }
     environment {
-        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+        BRANCH_NAME = "${env.BRANCH_NAME}"
         
         
     }
