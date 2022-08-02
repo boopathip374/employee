@@ -3,11 +3,18 @@ pipeline {
     tools {
         maven 'Maven'
     }
+    environment {
+        BRANCH = env.BRANCH_NAME
+        echo "** Branch Name: BRANCH"
+        NEXUS_REPOSITORY = "develop"
+        
+    }
+    
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'master', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
+                    git branch: 'BRANCH', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
         }
@@ -35,7 +42,7 @@ pipeline {
                             nexusUrl: '3.87.7.96:8081',
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: 'master',
+                            repository: 'BRANCH',
                             credentialsId: 'nexus3',
                             artifacts: [
                                 [artifactId: pom.artifactId,
