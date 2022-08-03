@@ -36,7 +36,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: '3.208.22.93:8081',
+                            nexusUrl: '3.84.74.191:8081',
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: BRANCH_NAME,
