@@ -3,15 +3,14 @@ pipeline {
     tools {
         maven 'Maven'
     }
-    environment {
+     environment {
         BRANCH_NAME = "${env.BRANCH_NAME}"
     }
-    
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                echo "** Branch Name: BRANCH_NAME";
+                echo "Branch_Name : BRANCH_NAME";
                     git branch: BRANCH_NAME, credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
@@ -59,5 +58,15 @@ pipeline {
                 }
             }
         }
+       if(BRANCH_NAME != "master"){
+       stage('Deploy to EC2'){
+            steps {
+                dir('deployment'){
+                    echo 'Deploying to test'
+                     ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'servers-ip', playbook: 'site.yml'
+                }
+            }
+        }
+       }
     }
 }
