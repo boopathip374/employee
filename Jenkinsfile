@@ -36,7 +36,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: '3.87.7.96:8081',
+                            nexusUrl: '3.208.22.93:8081',
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: BRANCH_NAME,
@@ -59,7 +59,7 @@ pipeline {
             }
         }
        stage('Deploy to EC2'){
-        when { not { branch 'master' } }
+        when { expression { return BRANCH_NAME != 'master'} }
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
