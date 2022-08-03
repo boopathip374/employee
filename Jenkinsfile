@@ -3,11 +3,15 @@ pipeline {
     tools {
         maven 'Maven'
     }
+     environment {
+        BRANCH_NAME = "${env.BRANCH_NAME}"
+    }
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'develop', credentialsId: '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', url: 'https://github.com/boopathip374/employee';
+                echo "Branch_Name : BRANCH_NAME";
+                    git branch: BRANCH_NAME, credentialsId: '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', url: 'https://github.com/boopathip374/employee';
                 }
             }
         }
@@ -32,10 +36,10 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: '3.87.7.96:8081',
+                            nexusUrl: '3.84.74.191:8081',
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: 'develop',
+                            repository: BRANCH_NAME,
                             credentialsId: 'nexus3',
                             artifacts: [
                                 [artifactId: pom.artifactId,
@@ -54,7 +58,8 @@ pipeline {
                 }
             }
         }
-       stage('Deploy to DEV_EC2'){
+       stage('Deploy to EC2'){
+        when { expression { return BRANCH_NAME != 'master'} }
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
