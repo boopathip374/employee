@@ -58,8 +58,8 @@ pipeline {
                 }
             }
         }
-       if(BRANCH_NAME != "master"){
        stage('Deploy to EC2'){
+        when { not { branch 'master' } }
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
@@ -67,6 +67,5 @@ pipeline {
                 }
             }
         }
-       }
     }
 }
